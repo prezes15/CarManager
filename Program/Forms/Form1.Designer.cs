@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1
+﻿namespace WinFormsApp1.Forms
 {
     partial class Form1
     {
@@ -37,7 +37,7 @@
             markaBox = new TextBox();
             modelBox = new TextBox();
             rokBox = new TextBox();
-            zatwierdzButton = new Button();
+            acceptBtn = new Button();
             listView1 = new ListView();
             mark = new ColumnHeader();
             model = new ColumnHeader();
@@ -138,21 +138,21 @@
             rokBox.TabIndex = 8;
             rokBox.Visible = false;
             // 
-            // zatwierdzButton
+            // acceptBtn
             // 
-            zatwierdzButton.Location = new Point(285, 385);
-            zatwierdzButton.Name = "zatwierdzButton";
-            zatwierdzButton.Size = new Size(117, 39);
-            zatwierdzButton.TabIndex = 9;
-            zatwierdzButton.Text = "Confirm";
-            zatwierdzButton.UseVisualStyleBackColor = true;
-            zatwierdzButton.Visible = false;
-            zatwierdzButton.Click += ConfirmBtn;
+            acceptBtn.Location = new Point(285, 385);
+            acceptBtn.Name = "acceptBtn";
+            acceptBtn.Size = new Size(117, 39);
+            acceptBtn.TabIndex = 9;
+            acceptBtn.Text = "Confirm";
+            acceptBtn.UseVisualStyleBackColor = true;
+            acceptBtn.Visible = false;
+            acceptBtn.Click += ConfirmBtn;
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { mark, model, year, accessibility });
-            listView1.Location = new Point(204, 121);
+            listView1.Location = new Point(176, 107);
             listView1.Name = "listView1";
             listView1.Size = new Size(445, 413);
             listView1.TabIndex = 10;
@@ -188,7 +188,7 @@
             button4.TabIndex = 11;
             button4.Text = "Rent";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += RentBtn;
+            button4.Click += RentReturnBtn;
             // 
             // button5
             // 
@@ -198,7 +198,7 @@
             button5.TabIndex = 12;
             button5.Text = "Return";
             button5.UseVisualStyleBackColor = true;
-            button5.Click += ReturnBtn;
+            button5.Click += RentReturnBtn;
             // 
             // saveBtn
             // 
@@ -252,7 +252,7 @@
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(listView1);
-            Controls.Add(zatwierdzButton);
+            Controls.Add(acceptBtn);
             Controls.Add(rokBox);
             Controls.Add(modelBox);
             Controls.Add(markaBox);
@@ -282,7 +282,7 @@
         private TextBox markaBox;
         private TextBox modelBox;
         private TextBox rokBox;
-        private Button zatwierdzButton;
+        private Button acceptBtn;
         private ListView listView1;
         private ColumnHeader mark;
         private ColumnHeader model;

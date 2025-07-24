@@ -1,4 +1,5 @@
-﻿namespace WinFormsApp1
+﻿using WinFormsApp1.Logic;
+namespace WinFormsApp1.Forms
 {
     partial class Form2
     {
@@ -35,6 +36,7 @@
             closeBtn = new Button();
             allLabel = new Label();
             all = new Label();
+            saveToFileBtn = new Button();
             SuspendLayout();
             // 
             // availableLabel
@@ -93,9 +95,9 @@
             allLabel.Font = new Font("Segoe UI", 15F);
             allLabel.Location = new Point(11, 135);
             allLabel.Name = "allLabel";
-            allLabel.Size = new Size(208, 28);
+            allLabel.Size = new Size(75, 28);
             allLabel.TabIndex = 5;
-            allLabel.Text = "number of rented cars:";
+            allLabel.Text = "all cars:";
             // 
             // all
             // 
@@ -106,11 +108,22 @@
             all.TabIndex = 6;
             all.Text = "none";
             // 
+            // saveToFileBtn
+            // 
+            saveToFileBtn.Location = new Point(16, 180);
+            saveToFileBtn.Name = "saveToFileBtn";
+            saveToFileBtn.Size = new Size(139, 33);
+            saveToFileBtn.TabIndex = 7;
+            saveToFileBtn.Text = "Save raport to file";
+            saveToFileBtn.UseVisualStyleBackColor = true;
+            saveToFileBtn.Click += SaveToRaportBtn;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(379, 388);
+            Controls.Add(saveToFileBtn);
             Controls.Add(all);
             Controls.Add(allLabel);
             Controls.Add(closeBtn);
@@ -133,5 +146,6 @@
         private Button closeBtn;
         private Label allLabel;
         private Label all;
+        private Button saveToFileBtn;
     }
 }

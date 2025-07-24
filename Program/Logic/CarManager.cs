@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Models;
 
-namespace WinFormsApp1
+namespace WinFormsApp1.Logic
 {
     internal class CarManager
     {
@@ -35,9 +36,8 @@ namespace WinFormsApp1
             Car samochod = new Car(mark, model, rokProdukcji, true);
             cars.Add(samochod);
         }
-        public void Rent(string userModel)
+        public bool Rent(string userModel, out string message)
         {
-
             for (int i = 0; i < cars.Count; i++)
             {
                 if (cars[i].Model == userModel)
@@ -45,23 +45,25 @@ namespace WinFormsApp1
                     if (cars[i].Accessibility)
                     {
                         cars[i].Accessibility = false;
-                        MessageBox.Show("The vehicle was rented", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        message = "The vehicle was rented";
+                        return true;
                     }
                     else
                     {
-                        MessageBox.Show("The vehicle is already rented", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        message = "The vehicle is already rented";
+                        return false;
                     }
-                    return;
+                    
                 }
             }
-            MessageBox.Show("Vehicle not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            message = "Vehicle not found";
+            return false;
 
 
         }
-        public void Return(string userModel)
+        public bool Return(string userModel, out string message)
         {
+            
             for (int i = 0; i < cars.Count; i++)
             {
                 if (cars[i].Model == userModel)
@@ -69,16 +71,19 @@ namespace WinFormsApp1
                     if (!cars[i].Accessibility)
                     {
                         cars[i].Accessibility = true;
-                        MessageBox.Show("The vehicle was returned", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        message = "The vehicle was returned";
+                        return true;
                     }
                     else
                     {
-                        MessageBox.Show("The vehicle has already been returned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        message = "The vehicle has already been returned";
+                        return false;
                     }
-                    return;
+                    
                 }
             }
-            MessageBox.Show("Vehicle not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            message = "Vehicle not found";
+            return false;
         }
         public void Load(List<Car> data)
         {
@@ -88,27 +93,11 @@ namespace WinFormsApp1
         {
             return cars;
         }
-
-        public void Raport(Label available, Label rented, Label all)
+        public (int Available, int Rented, int Total) GenerateReport()
         {
-                       
-            int availableTemp = 0;
-            int rentedTemp = 0;
-            for(int i = 0; i < cars.Count;i++)
-            {
-                if (cars[i].Accessibility)
-                {
-                    availableTemp++;
-                }
-                else
-                {
-                    rentedTemp++;
-                }
-            }
-            int allTemp = availableTemp + rentedTemp;
-            available.Text = availableTemp.ToString();
-            rented.Text = rentedTemp.ToString();
-            all.Text = allTemp.ToString();
+            int available = cars.Count(c => c.Accessibility);
+            int rented = cars.Count - available;
+            return (available, rented, cars.Count);
         }
     }
 }

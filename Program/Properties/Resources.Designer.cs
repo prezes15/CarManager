@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CarManager.Properties {
+namespace WinFormsApp1 {
     using System;
     
     

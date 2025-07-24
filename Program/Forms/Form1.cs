@@ -1,17 +1,19 @@
-using Microsoft.VisualBasic;
-namespace WinFormsApp1
+
+using WinFormsApp1.Logic;
+namespace WinFormsApp1.Forms
 {
-    public partial class Form1 : Form
+    partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
-            this.BackgroundImage = Image.FromFile(@"D:\image.png");
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            //this.BackgroundImage = Image.FromFile(@"D:\image.png");
+            //this.BackgroundImageLayout = ImageLayout.Stretch;
 
         }
 
         CarManager manager = new CarManager();
+        FileManager fileService = new FileManager();
         private void BtnClick1(object sender, EventArgs e)
         {
             markaBox.Visible = true;
@@ -20,7 +22,7 @@ namespace WinFormsApp1
             markaLabel.Visible = true;
             modelLabel.Visible = true;
             rokLabel.Visible = true;
-            zatwierdzButton.Visible = true;
+            acceptBtn.Visible = true;
             listView1.Visible = false;
 
         }
@@ -32,7 +34,7 @@ namespace WinFormsApp1
             rokBox.Visible = false;
             markaLabel.Visible = false;
             rokLabel.Visible = false;
-            zatwierdzButton.Visible = true;
+            acceptBtn.Visible = true;
             listView1.Visible = false;
 
             modelBox.Clear();
@@ -43,19 +45,21 @@ namespace WinFormsApp1
             HideAllButtons();
             ShowCarList();
         }
-        private void RentBtn(object sender, EventArgs e)
+        private void RentReturnBtn(object sender, EventArgs e)
         {
-            HideAllButtons();
-
-            string userModel = Interaction.InputBox("Specify the model for rent", "InputBox", "");
-            manager.Rent(userModel);
-        }
-        private void ReturnBtn(object sender, EventArgs e)
-        {
-            HideAllButtons();
-
-            string userModel = Interaction.InputBox("Specify the model for rent", "InputBox", "");
-            manager.Return(userModel);
+            
+            
+            if(((Button)sender).Text == "Rent")
+            {
+                InputDialog newForm = new InputDialog(manager, 0);
+                newForm.Show();
+                
+            }
+            else
+            {
+                InputDialog newForm = new InputDialog(manager, 1);
+                newForm.Show();
+            }
         }
         private void ConfirmBtn(object sender, EventArgs e)
         {
@@ -87,7 +91,7 @@ namespace WinFormsApp1
                     modelBox.Clear();
                     modelBox.Visible = false;
                     modelLabel.Visible = false;
-                    zatwierdzButton.Visible = false;
+                    acceptBtn.Visible = false;
                 }
                 else if (!usunieto)
                 {
@@ -130,29 +134,23 @@ namespace WinFormsApp1
             markaLabel.Visible = false;
             modelLabel.Visible = false;
             rokLabel.Visible = false;
-            zatwierdzButton.Visible = false;
+            acceptBtn.Visible = false;
             listView1.Visible = false;
             saveBtn.Visible = false;
             loadBtn.Visible = false;
         }
-
-        FileManager fileService = new FileManager();
-
-
         private void SaveBtn(object sender, EventArgs e)
         {
             fileService.Save(manager.GetAll());
         }
-
         private void LoadBtn(object sender, EventArgs e)
         {
             manager.Load(fileService.Load());
             ShowCarList();
         }
-
         private void RaportBtn(object sender, EventArgs e)
         {
-            if(manager.Cars == null || manager.Cars.Count == 0)
+            if (manager.Cars == null || manager.Cars.Count == 0)
             {
                 MessageBox.Show("there are no cars in the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -166,6 +164,8 @@ namespace WinFormsApp1
         {
             this.Close();
         }
+
+        
     }
 
 

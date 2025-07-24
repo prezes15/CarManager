@@ -1,4 +1,5 @@
-﻿namespace WinFormsApp1
+﻿using WinFormsApp1.Models;
+namespace WinFormsApp1.Logic
 {
     internal class FileManager
     {
@@ -61,6 +62,17 @@
             }
             return list;
 
+        }
+
+        public static void SaveRaport(Label available, Label rented, Label all)
+        {
+            using (StreamWriter sw = new StreamWriter("report.txt"))
+            {
+                sw.WriteLine($"number of available cars: {available.Text}");
+                sw.WriteLine($"number of rented cars:  {rented.Text}");
+                sw.WriteLine($"all cars {all.Text}");
+                MessageBox.Show("saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         
     }
