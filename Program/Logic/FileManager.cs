@@ -68,9 +68,16 @@ namespace WinFormsApp1.Logic
         {
             using (StreamWriter sw = new StreamWriter("report.txt"))
             {
-                sw.WriteLine($"number of available cars: {available.Text}");
-                sw.WriteLine($"number of rented cars:  {rented.Text}");
-                sw.WriteLine($"all cars {all.Text}");
+                try 
+                { 
+                    sw.WriteLine($"number of available cars: {available.Text}");
+                    sw.WriteLine($"number of rented cars:  {rented.Text}");
+                    sw.WriteLine($"all cars {all.Text}");
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 MessageBox.Show("saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

@@ -11,7 +11,7 @@ namespace WinFormsApp1.Logic
     {
         private List<Car> cars = new List<Car>();
         public IReadOnlyList<Car> Cars => cars.AsReadOnly();
-        public bool Usun(string model)
+        public bool Drop(string model)
         {
 
             for (int i = 0; i < cars.Count; i++)
@@ -33,8 +33,8 @@ namespace WinFormsApp1.Logic
             {
                 throw new FormatException("The year must be an integer");
             }
-            Car samochod = new Car(mark, model, rokProdukcji, true);
-            cars.Add(samochod);
+            Car car = new Car(mark, model, rokProdukcji, true);
+            cars.Add(car);
         }
         public bool Rent(string userModel, out string message)
         {

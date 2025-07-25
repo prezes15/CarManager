@@ -49,6 +49,7 @@
             loadBtn = new Button();
             raportBtn = new Button();
             closeBtn = new Button();
+            id = new ColumnHeader();
             SuspendLayout();
             // 
             // button1
@@ -151,10 +152,10 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { mark, model, year, accessibility });
-            listView1.Location = new Point(176, 107);
+            listView1.Columns.AddRange(new ColumnHeader[] { id, mark, model, year, accessibility });
+            listView1.Location = new Point(177, 108);
             listView1.Name = "listView1";
-            listView1.Size = new Size(445, 413);
+            listView1.Size = new Size(497, 413);
             listView1.TabIndex = 10;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -162,21 +163,25 @@
             // 
             // mark
             // 
+            mark.DisplayIndex = 0;
             mark.Text = "mark";
             mark.Width = 120;
             // 
             // model
             // 
+            model.DisplayIndex = 1;
             model.Text = "model";
             model.Width = 120;
             // 
             // year
             // 
+            year.DisplayIndex = 2;
             year.Text = "year of production";
             year.Width = 110;
             // 
             // accessibility
             // 
+            accessibility.DisplayIndex = 3;
             accessibility.Text = "accessibility";
             accessibility.Width = 90;
             // 
@@ -240,6 +245,12 @@
             closeBtn.UseVisualStyleBackColor = true;
             closeBtn.Click += CloseBtn;
             // 
+            // id
+            // 
+            id.DisplayIndex = 4;
+            id.Text = "id";
+            id.Width = 50;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -294,5 +305,6 @@
         private Button loadBtn;
         private Button raportBtn;
         private Button closeBtn;
+        private ColumnHeader id;
     }
 }

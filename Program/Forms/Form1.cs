@@ -25,6 +25,7 @@ namespace WinFormsApp1.Forms
             acceptBtn.Visible = true;
             listView1.Visible = false;
 
+
         }
         private void BtnClick2(object sender, EventArgs e)
         {
@@ -47,13 +48,13 @@ namespace WinFormsApp1.Forms
         }
         private void RentReturnBtn(object sender, EventArgs e)
         {
-            
-            
-            if(((Button)sender).Text == "Rent")
+
+
+            if (((Button)sender).Text == "Rent")
             {
                 InputDialog newForm = new InputDialog(manager, 0);
                 newForm.Show();
-                
+
             }
             else
             {
@@ -83,7 +84,7 @@ namespace WinFormsApp1.Forms
             }
             else if (modelBox.Visible && !markaBox.Visible)
             {
-                bool usunieto = manager.Usun(modelBox.Text);
+                bool usunieto = manager.Drop(modelBox.Text);
 
                 if (usunieto)
                 {
@@ -136,8 +137,8 @@ namespace WinFormsApp1.Forms
             rokLabel.Visible = false;
             acceptBtn.Visible = false;
             listView1.Visible = false;
-            saveBtn.Visible = false;
-            loadBtn.Visible = false;
+
+
         }
         private void SaveBtn(object sender, EventArgs e)
         {
@@ -159,13 +160,10 @@ namespace WinFormsApp1.Forms
             newForm.Show();
 
         }
-
         private void CloseBtn(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        
     }
 
 

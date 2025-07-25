@@ -13,6 +13,7 @@ namespace WinFormsApp1.Models
         int yearOfProduction;
         bool accessibility = true;
 
+        public int Id { get; }
         public string Mark
         {
             get { return mark; }
@@ -67,6 +68,7 @@ namespace WinFormsApp1.Models
 
         public Car(string mark, string model, int yearOfProduction, bool accessibility)
         {
+            
             Mark = mark;
             Model = model;
             YearOfProduction = yearOfProduction;
