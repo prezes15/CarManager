@@ -50,6 +50,8 @@
             loadBtn = new Button();
             raportBtn = new Button();
             closeBtn = new Button();
+            idLabel = new Label();
+            idBox = new TextBox();
             SuspendLayout();
             // 
             // button1
@@ -246,11 +248,32 @@
             closeBtn.UseVisualStyleBackColor = true;
             closeBtn.Click += CloseBtn;
             // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Font = new Font("Segoe UI", 15F);
+            idLabel.Location = new Point(12, 142);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(33, 28);
+            idLabel.TabIndex = 17;
+            idLabel.Text = "id:";
+            idLabel.Visible = false;
+            // 
+            // idBox
+            // 
+            idBox.Location = new Point(51, 147);
+            idBox.Name = "idBox";
+            idBox.Size = new Size(64, 23);
+            idBox.TabIndex = 18;
+            idBox.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(897, 609);
+            Controls.Add(idBox);
+            Controls.Add(idLabel);
             Controls.Add(closeBtn);
             Controls.Add(raportBtn);
             Controls.Add(loadBtn);
@@ -301,5 +324,7 @@
         private Button raportBtn;
         private Button closeBtn;
         private ColumnHeader id;
+        private Label idLabel;
+        private TextBox idBox;
     }
 }

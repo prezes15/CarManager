@@ -12,19 +12,33 @@ namespace WinFormsApp1.Logic
         private int indexId = 1;
         private List<Car> cars = new List<Car>();
         public IReadOnlyList<Car> Cars => cars.AsReadOnly();
-        public bool Drop(string model)
+        public bool Drop(string id, out string message)
         {
-
-            for (int i = 0; i < cars.Count; i++)
+            
+            if(int.TryParse(id, out indexId))
             {
-                if (cars[i].Model == model)
+                for(int i = 0; i < cars.Count; i++)
                 {
-                    cars.RemoveAt(i);
-
-                    return true;
-
+                    if(cars[i].Id == indexId)
+                    {
+                        cars.RemoveAt(i);
+                        RefreshId();
+                        message = "removed correctly";
+                        return true;
+                    }
+                    else
+                    {
+                        message = "id doesn't exist";
+                        return false;
+                    }
                 }
             }
+            else
+            {
+                message = "Wrong id!";
+                return false;
+            }
+            message = "Car doesn't exist";
             return false;
 
         }
@@ -100,6 +114,13 @@ namespace WinFormsApp1.Logic
             int available = cars.Count(c => c.Accessibility);
             int rented = cars.Count - available;
             return (available, rented, cars.Count);
+        }
+        private void RefreshId()
+        {
+            for(int i = 0; i < cars.Count; i++)
+            {
+                cars[i].Id = i + 1;
+            }
         }
     }
 }

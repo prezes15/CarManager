@@ -29,8 +29,8 @@ namespace WinFormsApp1.Forms
         }
         private void BtnClick2(object sender, EventArgs e)
         {
-            modelBox.Visible = true;
-            modelLabel.Visible = true;
+            idBox.Visible = true;
+            idLabel.Visible = true;
             markaBox.Visible = false;
             rokBox.Visible = false;
             markaLabel.Visible = false;
@@ -38,7 +38,7 @@ namespace WinFormsApp1.Forms
             acceptBtn.Visible = true;
             listView1.Visible = false;
 
-            modelBox.Clear();
+            idBox.Clear();
 
         }
         private void BtnClick3(object sender, EventArgs e)
@@ -82,21 +82,22 @@ namespace WinFormsApp1.Forms
                 HideAllButtons();
 
             }
-            else if (modelBox.Visible && !markaBox.Visible)
+            else if (idLabel.Visible && idBox.Visible)
             {
-                bool usunieto = manager.Drop(modelBox.Text);
+                string message;
+                bool usunieto = manager.Drop(idBox.Text, out message);
 
                 if (usunieto)
                 {
-                    MessageBox.Show("Car removed!", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    modelBox.Clear();
-                    modelBox.Visible = false;
-                    modelLabel.Visible = false;
+                    MessageBox.Show(message, "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    idBox.Clear();
+                    idBox.Visible = false;
+                    idLabel.Visible = false;
                     acceptBtn.Visible = false;
                 }
                 else if (!usunieto)
                 {
-                    MessageBox.Show("There is no such car", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -140,6 +141,8 @@ namespace WinFormsApp1.Forms
             rokLabel.Visible = false;
             acceptBtn.Visible = false;
             listView1.Visible = false;
+            idBox.Visible = false;
+            idLabel.Visible = false;
 
 
         }

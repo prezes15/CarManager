@@ -12,9 +12,11 @@ namespace WinFormsApp1.Models
         string model;
         int yearOfProduction;
         bool accessibility = true;
+
+
+        public int Id {get; set;}
+
         
-        
-        public int Id { get; }
         public string Mark
         {
             get { return mark; }
@@ -76,5 +78,6 @@ namespace WinFormsApp1.Models
             Accessibility = accessibility;
 
         }
+        
     }
 }
