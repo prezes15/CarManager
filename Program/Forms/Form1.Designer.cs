@@ -39,6 +39,7 @@
             rokBox = new TextBox();
             acceptBtn = new Button();
             listView1 = new ListView();
+            id = new ColumnHeader();
             mark = new ColumnHeader();
             model = new ColumnHeader();
             year = new ColumnHeader();
@@ -49,7 +50,6 @@
             loadBtn = new Button();
             raportBtn = new Button();
             closeBtn = new Button();
-            id = new ColumnHeader();
             SuspendLayout();
             // 
             // button1
@@ -155,33 +155,34 @@
             listView1.Columns.AddRange(new ColumnHeader[] { id, mark, model, year, accessibility });
             listView1.Location = new Point(177, 108);
             listView1.Name = "listView1";
-            listView1.Size = new Size(497, 413);
+            listView1.Size = new Size(494, 413);
             listView1.TabIndex = 10;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             listView1.Visible = false;
             // 
+            // id
+            // 
+            id.Text = "id";
+            id.Width = 50;
+            // 
             // mark
             // 
-            mark.DisplayIndex = 0;
             mark.Text = "mark";
             mark.Width = 120;
             // 
             // model
             // 
-            model.DisplayIndex = 1;
             model.Text = "model";
             model.Width = 120;
             // 
             // year
             // 
-            year.DisplayIndex = 2;
             year.Text = "year of production";
             year.Width = 110;
             // 
             // accessibility
             // 
-            accessibility.DisplayIndex = 3;
             accessibility.Text = "accessibility";
             accessibility.Width = 90;
             // 
@@ -244,12 +245,6 @@
             closeBtn.Text = "Close";
             closeBtn.UseVisualStyleBackColor = true;
             closeBtn.Click += CloseBtn;
-            // 
-            // id
-            // 
-            id.DisplayIndex = 4;
-            id.Text = "id";
-            id.Width = 50;
             // 
             // Form1
             // 

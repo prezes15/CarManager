@@ -107,7 +107,9 @@ namespace WinFormsApp1.Forms
                 listView1.Items.Clear();
                 for (int i = 0; i < manager.Cars.Count; i++)
                 {
-                    var item = new ListViewItem(manager.Cars[i].Mark);
+                    
+                    var item = new ListViewItem(manager.Cars[i].Id.ToString());
+                    item.SubItems.Add(manager.Cars[i].Mark);
                     item.SubItems.Add(manager.Cars[i].Model);
                     item.SubItems.Add(manager.Cars[i].YearOfProduction.ToString());
                     if (manager.Cars[i].Accessibility)
@@ -118,6 +120,7 @@ namespace WinFormsApp1.Forms
                     {
                         item.SubItems.Add("no");
                     }
+                    
                     listView1.Items.Add(item);
                     listView1.Visible = true;
                 }

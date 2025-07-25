@@ -17,7 +17,7 @@ namespace WinFormsApp1.Logic
             {
                 for (int i = 0; i < cars.Count; i++)
                 {
-                    sw.WriteLine($"{cars[i].Mark};{cars[i].Model};{cars[i].YearOfProduction};{cars[i].Accessibility}");
+                    sw.WriteLine($"{cars[i].Id};{cars[i].Mark};{cars[i].Model};{cars[i].YearOfProduction};{cars[i].Accessibility}");
                 }
             }
 
@@ -34,20 +34,21 @@ namespace WinFormsApp1.Logic
             }
             int year;
             bool temp;
+            int id;
             string[] lines = File.ReadAllLines(path);
             for (int i = 0; i < lines.Length; i++)
             {
                 var data = lines[i].Split(';');
-                if(data.Length < 4)
+                if(data.Length < 5)
                 {
                     MessageBox.Show($"File error on line {i+1}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     continue;
                 }
-                if(int.TryParse(data[2], out year) && bool.TryParse(data[3], out temp))
+                if(int.TryParse(data[2], out year) && bool.TryParse(data[3], out temp) && int.TryParse(data[0], out id))
                 {
                     try 
                     { 
-                        list.Add(new Car(data[0], data[1], year, temp));
+                        list.Add(new Car(id, data[1], data[2], year, temp));
                     }
                     catch (ArgumentException ex)
                     {

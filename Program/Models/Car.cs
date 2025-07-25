@@ -12,7 +12,8 @@ namespace WinFormsApp1.Models
         string model;
         int yearOfProduction;
         bool accessibility = true;
-
+        
+        
         public int Id { get; }
         public string Mark
         {
@@ -66,9 +67,9 @@ namespace WinFormsApp1.Models
             set { accessibility = value; }
         }
 
-        public Car(string mark, string model, int yearOfProduction, bool accessibility)
+        public Car(int id, string mark, string model, int yearOfProduction, bool accessibility)
         {
-            
+            Id = id;
             Mark = mark;
             Model = model;
             YearOfProduction = yearOfProduction;
