@@ -52,11 +52,11 @@ namespace WinFormsApp1.Logic
             indexId++;
             cars.Add(car);
         }
-        public bool Rent(string userModel, out string message)
+        public bool Rent(int userModel, out string message)
         {
             for (int i = 0; i < cars.Count; i++)
             {
-                if (cars[i].Model == userModel)
+                if (cars[i].Id == userModel)
                 {
                     if (cars[i].Accessibility)
                     {
@@ -77,12 +77,12 @@ namespace WinFormsApp1.Logic
 
 
         }
-        public bool Return(string userModel, out string message)
+        public bool Return(int userId, out string message)
         {
             
             for (int i = 0; i < cars.Count; i++)
             {
-                if (cars[i].Model == userModel)
+                if (cars[i].Id == userId)
                 {
                     if (!cars[i].Accessibility)
                     {

@@ -24,6 +24,8 @@ namespace WinFormsApp1.Forms
             rokLabel.Visible = true;
             acceptBtn.Visible = true;
             listView1.Visible = false;
+            idBox.Visible = false;
+            idLabel.Visible = false;
 
 
         }
@@ -54,12 +56,13 @@ namespace WinFormsApp1.Forms
             {
                 InputDialog newForm = new InputDialog(manager, 0);
                 newForm.Show();
-
+                HideAllButtons();
             }
             else
             {
                 InputDialog newForm = new InputDialog(manager, 1);
                 newForm.Show();
+                HideAllButtons();
             }
         }
         private void ConfirmBtn(object sender, EventArgs e)

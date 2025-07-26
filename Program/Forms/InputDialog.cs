@@ -23,24 +23,34 @@ namespace WinFormsApp1.Forms
 
         private void CancelBtn(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void SendBtn(object sender, EventArgs e)
         {
-            string userModel = modelBox.Text;
+            int userId;
             string message;
             bool success;
-            if (Temp == 0)
+
+            if(int.TryParse(idBox.Text, out userId))
             {
-                success = manager.Rent(userModel, out message);
-                
+                if (Temp == 0)
+                {
+                    success = manager.Rent(userId, out message);
+                    this.Close();
+
+                }
+                else
+                {
+                    success = manager.Return(userId, out message);
+                }
+                MessageBox.Show(message, success ? "Success" : "Error", MessageBoxButtons.OK, success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
             }
             else
             {
-                success = manager.Return(userModel, out message);
+                MessageBox.Show("Id must be a number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show(message, success ? "Success" : "Error", MessageBoxButtons.OK, success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+            
         }
         
     }

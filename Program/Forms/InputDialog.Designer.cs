@@ -30,8 +30,8 @@
         {
             cancelBtn = new Button();
             sendBtn = new Button();
-            label1 = new Label();
-            modelBox = new TextBox();
+            idLabel = new Label();
+            idBox = new TextBox();
             SuspendLayout();
             // 
             // cancelBtn
@@ -54,31 +54,31 @@
             sendBtn.UseVisualStyleBackColor = true;
             sendBtn.Click += SendBtn;
             // 
-            // label1
+            // idLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(12, 49);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 28);
-            label1.TabIndex = 2;
-            label1.Text = "model:";
+            idLabel.AutoSize = true;
+            idLabel.Font = new Font("Segoe UI", 15F);
+            idLabel.Location = new Point(12, 49);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(33, 28);
+            idLabel.TabIndex = 2;
+            idLabel.Text = "id:";
             // 
-            // modelBox
+            // idBox
             // 
-            modelBox.Font = new Font("Segoe UI", 15F);
-            modelBox.Location = new Point(100, 43);
-            modelBox.Name = "modelBox";
-            modelBox.Size = new Size(168, 34);
-            modelBox.TabIndex = 3;
+            idBox.Font = new Font("Segoe UI", 15F);
+            idBox.Location = new Point(51, 43);
+            idBox.Name = "idBox";
+            idBox.Size = new Size(168, 34);
+            idBox.TabIndex = 3;
             // 
             // InputDialog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(396, 191);
-            Controls.Add(modelBox);
-            Controls.Add(label1);
+            Controls.Add(idBox);
+            Controls.Add(idLabel);
             Controls.Add(sendBtn);
             Controls.Add(cancelBtn);
             Name = "InputDialog";
@@ -91,7 +91,7 @@
 
         private Button cancelBtn;
         private Button sendBtn;
-        private Label label1;
-        private TextBox modelBox;
+        private Label idLabel;
+        private TextBox idBox;
     }
 }
